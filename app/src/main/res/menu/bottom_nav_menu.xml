@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/navigation_playlist"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Playlist" />
+    <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Quiz" />
+</menu>

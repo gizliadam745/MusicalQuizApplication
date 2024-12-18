@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Musical Quiz Application</string>
+    <string name="hello_msg">Hello World!</string>
+    <string name="nameHint">Type your name here</string>
+    <string name="btnSubmitText">Submit</string>
+    <string name="offer_msg">%1$s, you will get free access to all content for one month</string>
+    <string name="guess_song">Guess the song</string>
+</resources>
