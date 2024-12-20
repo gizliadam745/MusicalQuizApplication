@@ -1,17 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
-//    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
-    kotlin("android") version "2.0.21"
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
-    namespace = "com.example.musicalquiz"
+    namespace = "com.example.myapplication"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.musicalquiz"
-        minSdk = 29
+        applicationId = "com.example.myapplication"
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -38,36 +38,49 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
+    }
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx.v190)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material.v190)
-    implementation(libs.androidx.constraintlayout)
-    //Retrofit for API calls
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    //ViewModel and LiveData
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    // RecyclerView
-    implementation(libs.androidx.recyclerview)
-    // Room Database
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.databinding.adapters)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
-    //Glide for Image Loading
-    implementation(libs.glide)
-    annotationProcessor(libs.compiler)
-    //Coroutines
-    implementation(libs.kotlinx.coroutines.android)
-    //viewModels
-    implementation(libs.androidx.fragment.ktx)
+    implementation("androidx.activity:activity:1.8.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.v121)
-    androidTestImplementation(libs.androidx.espresso.core.v361)
+    // Retrofit for network requests
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Room for database
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+
+    // ViewModel and LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+
+    ksp("androidx.room:room-compiler:2.5.2")
+
+    // Material Components
+    implementation("com.google.android.material:material:1.9.0")
+
+    kapt(libs.androidx.databinding.compiler)
 }
